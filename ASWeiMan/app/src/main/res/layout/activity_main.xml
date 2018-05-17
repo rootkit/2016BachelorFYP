@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- banner start -->
+
+	<RelativeLayout
+        android:id="@+id/Camera_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_height"
+        android:background="@color/tab_top" >
+
+	    <ImageView 
+	        android:id="@+id/iv_back"
+	        android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/tab_left_padding"
+            android:src="@drawable/ic_back"
+	        />
+        <TextView
+            android:id="@+id/textView_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="头像编辑"
+            android:textColor="#fff"
+            android:textSize="@dimen/tab_front_size" />
+
+        <ImageView
+            android:id="@+id/iv_continue"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/abc_action_bar_icon_vertical_padding_material"
+            android:layout_marginTop="@dimen/abc_action_bar_icon_vertical_padding_material"
+            android:gravity="center"
+            android:paddingRight="@dimen/tab_right_padding"
+            android:src="@drawable/ic_continue" />
+
+    </RelativeLayout>
+    <!-- banner end -->
+
+    <!-- main part -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <!-- webview -->
+
+        <RelativeLayout
+            android:id="@+id/rl_webview_package"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <RelativeLayout
+                android:id="@+id/relativelayout_webview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <WebView
+                    android:id="@+id/webview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_option"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <com.shizhefei.view.indicator.ScrollIndicatorView
+                android:id="@+id/siv_features"
+                android:background="#fefefe"
+                android:layout_width="match_parent"
+                android:layout_height="45dp" />
+			
+            <android.support.v4.view.ViewPager
+                android:layout_below="@id/siv_features"
+                android:id="@+id/vp_features"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+               />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

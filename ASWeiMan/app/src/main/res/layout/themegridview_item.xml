@@ -1,0 +1,83 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/gridview_item"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/tab_top" >
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/picture"
+        android:layout_below="@id/picture"
+        android:text="圣诞场景"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+    
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/picture"
+        android:layout_below="@id/name"
+        android:layout_marginBottom="8dp"
+        android:text="免费"
+        android:textColor="@color/white"
+        android:textSize="10sp" />
+    
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/right_labels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignBottom="@id/price"
+        android:layout_marginTop="16dp"
+        fab:fab_addButtonColorNormal="@color/white"
+        fab:fab_addButtonColorPressed="@color/white_pressed"
+        fab:fab_addButtonPlusIconColor="@color/half_black"
+        fab:fab_addButtonSize="mini"
+        fab:fab_labelsPosition="right">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/FloatingBtn_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_size="mini"
+            fab:fab_title=""
+            fab:fab_colorPressed="@color/white_pressed"
+            fab:fab_icon="@drawable/delete"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/FloatingBtn_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fab:fab_colorNormal="@color/white"
+            fab:fab_size="mini"
+            fab:fab_title=""
+            fab:fab_colorPressed="@color/white_pressed"
+            fab:fab_icon="@drawable/share"/>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/picture"
+        android:layout_marginTop="48dp" >
+    </LinearLayout>
+    
+</RelativeLayout>

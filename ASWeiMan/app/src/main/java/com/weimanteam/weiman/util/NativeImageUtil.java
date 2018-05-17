@@ -1,0 +1,43 @@
+package com.weimanteam.weiman.util;
+
+import org.opencv.core.Mat;
+import android.util.Log;
+
+public class NativeImageUtil {
+
+	private final static String TAG = "com.example.asm.com.weimanteam.weiman.util.NativeImageUtil";
+
+	public static Mat CannyDetect(Mat src, double threshold1,
+			double threshold2, int aperatureSize) {
+		Log.i(TAG, "do CannyDetect");
+		Mat mat = new Mat();
+		NativeCode.DoCanny(src.getNativeObjAddr(), mat.getNativeObjAddr(),
+				threshold1, threshold2, aperatureSize);
+		return mat;
+	}
+
+	public static Mat FaceDetect2(Mat src, double scaleFactor, int minNeighbors, int minSize) {
+		Log.i(TAG, "do FaceDetect");
+		Mat mat = new Mat();
+		NativeCode.FaceDetect(src.getNativeObjAddr(), mat.getNativeObjAddr(), scaleFactor, minNeighbors, minSize);
+		return mat;
+	}
+	
+	public static int[] FindFaceLandmarks(Mat src, float ratioW, float ratioH) {
+		Log.i(TAG, "do ASM landmarks location");
+		return NativeCode.FindFaceLandmarks(src.getNativeObjAddr(), ratioW, ratioH);
+	}
+	public static double LBPmatching(Mat targetImg, Mat compareImg){
+		Log.i(TAG, "doing LBP");
+		double res = NativeCode.LBPmatching(targetImg.getNativeObjAddr(),compareImg.getNativeObjAddr());
+		Log.i(TAG, "finish LBP "+ res);
+		return res;
+	}
+	public static int[] Facematching(int[] input1,int[] input2){
+		Log.i(TAG, "doing Face matching");
+		int[] res;
+		res = NativeCode.Facematching(input1, input2);
+		Log.i(TAG, "finish Face matching "+ res);
+		return res;
+	}
+}

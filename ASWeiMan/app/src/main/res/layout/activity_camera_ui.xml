@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF" >
+
+    <RelativeLayout
+        android:id="@+id/Camera_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/tab_height"
+        android:background="@color/tab_top" >
+
+        <TextView
+            android:id="@+id/textView_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="微漫"
+            android:textColor="#fff"
+            android:textSize="@dimen/tab_front_size" />
+
+        <Button
+            android:id="@+id/pop_up_window"
+            android:layout_width="50dip"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:background="@drawable/actionbar_more_icon"
+		/>
+        
+        <ImageView
+            android:id="@+id/iv_next"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/abc_action_bar_icon_vertical_padding_material"
+            android:layout_marginTop="@dimen/abc_action_bar_icon_vertical_padding_material"
+            
+            android:clickable="false"
+            android:gravity="center"
+            android:maxHeight="@dimen/abc_action_bar_icon_vertical_padding_material"
+            android:paddingRight="@dimen/tab_right_padding"
+            android:src="@drawable/ic_continue" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rl_take_photo"
+        android:layout_below="@id/Camera_layout"
+        android:layout_centerHorizontal="true"
+        android:background="#FFF"
+        android:scaleType="centerCrop"
+        android:src="@drawable/show_face" />
+
+    <RelativeLayout
+        android:id="@+id/rl_take_photo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true" >
+
+        <com.weimanteam.weiman.widget.RoundImageView
+            android:id="@+id/switch_cinema"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/bottom_tab_left_padding"
+            android:clickable="true"
+            android:onClick="doTakePhoto"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_camera_rear_black_48dp" />
+        
+        <com.weimanteam.weiman.widget.RoundImageView
+            android:id="@+id/capture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="#ce3d3a"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/bottom_tab_left_padding"
+            android:clickable="true"
+            android:onClick="doTakePhoto"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_take_photo" />
+
+        <com.weimanteam.weiman.widget.RoundImageView
+            android:id="@+id/document"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/bottom_tab_right_padding"
+            android:clickable="true"
+            android:onClick="doPickPhoto"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_collections_black_48dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
