@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <RelativeLayout
+        android:id="@+id/Theme_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_shang" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="false"
+            android:text="萌星"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btnThemeBack"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bt_getback2_up" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/Theme_layout2"
+        android:layout_width="fill_parent"
+        android:layout_height="112dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/Theme_layout"
+        android:orientation="horizontal" >
+        
+        <TextView
+            android:id="@+id/MyEmotion"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="#9acd63"
+            android:text="我的表情"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+        
+        <TextView
+            android:id="@+id/MyHead"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="#25c7d7"
+            android:text="我的头像"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp" />
+        
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/Theme_layout2"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" >
+
+    </ListView>
+
+</RelativeLayout>

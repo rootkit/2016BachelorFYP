@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>demo</title>
+	<!--script_file-->
+	<script src="lib/d3.v3.min.js"></script>
+	<script src="lib/zepto.min.js"></script>
+	<!--绘制bubble-->
+	<script src="js/dataparse.js"></script>
+	<script src="js/personchange.js"></script>
+	<!--数据导入-->
+	<script src="data/bodyData.js"></script>
+	<script src="data/faceData.js"></script>
+	<script src="data/mouthData.js"></script>
+	<script src="data/hairData.js"></script>
+	<script src="data/eyeData.js"></script>
+	<script src="data/eyebrowData.js"></script>
+	<script src="data/noseData.js"></script>
+	<script src="data/glassData.js"></script>
+	<script src="data/hatData.js"></script>
+	<script src="data/bubbleData.js"></script>
+	<script src="data/clothData.js"></script>
+	<script src="data/backgroundData.js"></script>
+	<script src="data/hobbyData.js"></script>
+	<script src="data/featureData.js"></script>
+	<script src="data/expressData.js"></script>
+	<!--css_file-->
+	<link href="css/reset.css" type="text/css" rel="stylesheet" />
+	<link href="css/edit.css" type="text/css" rel="stylesheet" />
+	<link href="css/class.css" type="text/css" rel="stylesheet" />
+	<style>
+		.pathS{
+			fill-rule:evenodd;
+			clip-rule:evenodd;
+		}
+	</style>
+</head>
+
+
+<body >
+
+
+	<div id="contentDIV">
+
+	</div>
+	
+
+<script type="text/javascript" language="javascript">
+var sexTag = {
+    id: 0
+};
+var bodyTag = {
+    id: 1
+};
+var faceTag = {
+    id: 0,
+    color: "#F4CDA7",
+    x: 0,
+    y: 0
+};
+var eyebrowTag = {
+    id: 0,
+    x: 0,
+    y: 0
+};
+var glassTag = {
+    id: 0,
+    x: 0,
+    y: 0
+};
+var bubbleTag = {
+    id: 0,
+    x: 0,
+    y: 0
+};
+var hatTag = {
+    id: 0,
+    x: 0,
+    y: 0
+};
+var featureTag = {
+    id: 0,
+    x: 0,
+    y: 0
+};
+var backgroundTag = {
+    id: 29,
+    x: 0,
+    y: 0
+};
+var clothTag = {
+    id: 1,
+    x: 0,
+    y: 0
+};
+var eyeTag = {
+    id: 0,
+    x: 0,
+    y: 0
+};
+var hobbyTag = {
+    id: 0,
+    x: 0,
+    y: 0
+};
+var hairTag = {
+    id: 0,
+    color: "#F29600",
+    x: 0,
+    y: 0
+};
+var mouthTag = {
+    id: 0,
+    x: 0,
+    y: 0
+};
+var expressTag = {
+    id: 0,
+    x: 0,
+    y: 0
+};
+var noseTag = {
+    id: 0,
+    x: 0,
+    y: 0
+};
+
+var svgWidth = 640;
+var svgHeight = 640;
+var winWidth = $(window).get(0).innerWidth;
+var winHeight = $(window).get(0).innerHeight;
+var minWidth = winWidth < winHeight ? winWidth: winHeight;
+var svg = d3.select("#contentDIV").append("svg").attr("xmlns", "http://www.w3.org/2000/svg").attr("version", "1.1").attr("id", "contentSVG").attr("width", svgWidth).attr("height", svgHeight).attr("viewBox", "0 0 " + svgWidth + " " + svgHeight).attr("xml:space", "preserve");
+var background2 = svg.append("g").attr("id", "background2");
+var background3 = svg.append("g").attr("id", "background3");
+var background = svg.append("g").attr("id", "background");
+var roleA = svg.append("g").attr("id", "roleA");
+var personSVG = roleA.append("g").attr("id", "person");
+var backHairSVG = personSVG.append("g").attr("id", "backHairSVG");
+var bodySVG = personSVG.append("g").attr("id", "body");
+var headSVG = personSVG.append("g").attr("id", "head");
+var hobby = roleA.append("g").attr("id", "hobby");
+var bubble = roleA.append("g").attr("id", "bubble");
+var backHair = backHairSVG.append("g").attr("id", "backHair");
+var middleHair = headSVG.append("g").attr("id", "middleHair");
+var face = headSVG.append("g").attr("id", "face");
+var facial = headSVG.append("g").attr("id", "facial");
+var eyebrow = facial.append("g").attr("id", "eyebrow");
+var mouth = facial.append("g").attr("id", "mouth");
+var eye = facial.append("g").attr("id", "eye");
+var nose = facial.append("g").attr("id", "nose");
+var express = headSVG.append("g").attr("id", "express");
+var feature = headSVG.append("g").attr("id", "feature");
+var frontHair = headSVG.append("g").attr("id", "frontHair");
+var express2 = headSVG.append("g").attr("id", "express2");
+var glass = headSVG.append("g").attr("id", "glass");
+var hat = headSVG.append("g").attr("id", "hat");
+var body = bodySVG.append("g").attr("id", "body");
+var cloth = bodySVG.append("g").attr("id", "cloth");
+
+function initHeadEdit() {
+
+	d3.select("#contentSVG").attr("width", $(window).get(0).innerWidth).attr("height", $(window).get(0).innerHeight)
+   
+}
+
+
+function facialConfigChange(sindex, id , xx, yy, ss, times) {
+
+    if (sindex == 1) {
+        faceData["face" + id].frontSide.cX = xx;
+        faceData["face" + id].frontSide.cY = yy;
+        faceData["face" + id].frontSide.cS = ss;
+        faceChange(id);
+
+        if (times < 2) {
+            var svgRect = document.getElementById("contentSVG").getBoundingClientRect();
+            var facialRect = document.getElementById("face").getBoundingClientRect();
+            var r = 640 / svgRect.right;
+
+            // var hold = $("." + "eyePart").getBoundingClientRect();
+            window.jsObj.setRect(facialRect.top * r, facialRect.bottom * r, facialRect.left * r, facialRect.right * r, facialRect.width * r);
+            // var eyeRect = document.getElementById("eye").getBoundingClientRect();
+
+            // window.jsObj.setRect(eyeRect.top, eyeRect.bottom, eyeRect.left, eyeRect.right, eyeRect.width);
+        }
+
+    }
+
+    if (sindex == 2) {
+        eyeData["eye" + id].frontSide.cX = xx;
+        eyeData["eye" + id].frontSide.cY = yy;
+        eyeData["eye" + id].frontSide.cS = ss;
+        eyeChange(id);
+        
+        if (times < 2) {
+            var svgRect = document.getElementById("contentSVG").getBoundingClientRect();
+            var facialRect = document.getElementById("eye").getBoundingClientRect();
+            var r = 640 / svgRect.right;
+
+            // var hold = $("." + "eyePart").getBoundingClientRect();
+            window.jsObj.setRect(facialRect.top * r, facialRect.bottom * r, facialRect.left * r, facialRect.right * r, facialRect.width * r);
+            // var eyeRect = document.getElementById("eye").getBoundingClientRect();
+
+            // window.jsObj.setRect(eyeRect.top, eyeRect.bottom, eyeRect.left, eyeRect.right, eyeRect.width);
+        }
+
+    }
+
+    if (sindex == 3) {
+        eyebrowData["eyebrow" + id].frontSide.cX = xx;
+        eyebrowData["eyebrow" + id].frontSide.cY = yy;
+        eyebrowData["eyebrow" + id].frontSide.cS = ss;
+        eyebrowChange(id);
+
+         if (times < 2) {
+            var svgRect = document.getElementById("contentSVG").getBoundingClientRect();
+            var facialRect = document.getElementById("eyebrow").getBoundingClientRect();
+            var r = 640 / svgRect.right;
+
+            // var hold = $("." + "eyePart").getBoundingClientRect();
+            window.jsObj.setRect(facialRect.top * r, facialRect.bottom * r, facialRect.left * r, facialRect.right * r, facialRect.width * r);
+            // var eyeRect = document.getElementById("eye").getBoundingClientRect();
+
+            // window.jsObj.setRect(eyeRect.top, eyeRect.bottom, eyeRect.left, eyeRect.right, eyeRect.width);
+        }
+    }
+
+    if (sindex == 4) {
+        noseData["nose" + id].frontSide.cX = xx;
+        noseData["nose" + id].frontSide.cY = yy;
+        noseData["nose" + id].frontSide.cS = ss;
+        noseChange(id);
+        if (times < 2) {
+            var svgRect = document.getElementById("contentSVG").getBoundingClientRect();
+            var facialRect = document.getElementById("nose").getBoundingClientRect();
+            var r = 640 / svgRect.right;
+
+            // var hold = $("." + "eyePart").getBoundingClientRect();
+            window.jsObj.setRect(facialRect.top * r, facialRect.bottom * r, facialRect.left * r, facialRect.right * r, facialRect.width * r);
+            // var eyeRect = document.getElementById("eye").getBoundingClientRect();
+
+            // window.jsObj.setRect(eyeRect.top, eyeRect.bottom, eyeRect.left, eyeRect.right, eyeRect.width);
+        }
+    }
+
+    if (sindex == 5) {
+        mouthData["mouth" + id].frontSide.cX = xx;
+        mouthData["mouth" + id].frontSide.cY = yy;
+        mouthData["mouth" + id].frontSide.cS = ss;
+        mouthChange(id);
+        if (times < 2) {
+            var svgRect = document.getElementById("contentSVG").getBoundingClientRect();
+            var facialRect = document.getElementById("mouth").getBoundingClientRect();
+            var r = 640 / svgRect.right;
+
+            // var hold = $("." + "eyePart").getBoundingClientRect();
+            window.jsObj.setRect(facialRect.top * r, facialRect.bottom * r, facialRect.left * r, facialRect.right * r, facialRect.width * r);
+            // var eyeRect = document.getElementById("eye").getBoundingClientRect();
+
+            // window.jsObj.setRect(eyeRect.top, eyeRect.bottom, eyeRect.left, eyeRect.right, eyeRect.width);
+        }
+
+    }
+}
+
+
+    bodyChange(1);
+	
+    hairChange(hairTag.id);
+	
+	
+	
+	
+    mouthChange(mouthTag.id);
+    eyeChange(eyeTag.id);
+    eyebrowChange(eyebrowTag.id);
+    noseChange(noseTag.id);
+    expressChange(expressTag.id);
+    faceChange(faceTag.id);
+    hatChange(hatTag.id);
+    backgroundChange(backgroundTag.id);
+    hobbyChange(hobbyTag.id);
+    clothChange(clothTag.id);
+    bubbleChange(bubbleTag.id);
+    featureChange(featureTag.id);
+    glassChange(glassTag.id)
+	
+	initHeadEdit();
+
+
+</script>	
+
+
+</body>
+</html>
+
+
+

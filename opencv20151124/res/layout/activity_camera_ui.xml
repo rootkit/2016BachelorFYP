@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:background="#FFF">
+    
+    <RelativeLayout
+        android:id="@+id/Camera_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_shang" >
+
+        <TextView
+            android:id="@+id/textView_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="false"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="false"
+            android:text="萌星"
+            android:textSize="20sp" />
+        
+        <Button
+        	android:id="@+id/button1"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_alignParentRight="true"
+        	android:layout_centerInParent="true"
+        	android:text="确定" 
+        	android:onClick="toWebView"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/capture"
+        android:layout_below="@id/Camera_layout"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/show_face" 
+        android:scaleType="centerCrop"
+        android:background="#FFF"/>
+
+    <com.weimanteam.weiman.widget.RoundImageView
+        android:id="@+id/capture"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="38dp"
+        android:layout_marginLeft="58dp"
+        android:baselineAlignBottom="false"
+        android:clickable="true"
+        android:onClick="doTakePhoto"
+        android:scaleType="centerCrop"
+        android:src="@drawable/capture" />
+
+    <com.weimanteam.weiman.widget.RoundImageView
+        android:id="@+id/document"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/capture"
+        android:layout_marginRight="60dp"
+        android:clickable="true"
+        android:onClick="doPickPhoto"
+        android:scaleType="centerCrop"
+        android:src="@drawable/document" />
+
+</RelativeLayout>
